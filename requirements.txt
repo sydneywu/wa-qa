@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+requests
+python-dotenv
+langchain
+openai
+huggingface_hub
+faiss-cpu
+tiktoken

@@ -1,0 +1,5 @@
+venv/
+.env
+**/__pycache__/
+docs.index
+faiss_store.pkl

@@ -3,3 +3,7 @@ venv/
 **/__pycache__/
 docs.index
 faiss_store.pkl
+
+# exclude everything in report except .gitkeep
+/report/*
+!/report/.gitkeep 

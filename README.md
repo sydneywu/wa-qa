@@ -2,7 +2,9 @@
 
 This project is a demo to connect Whatsapp to using AI to respond based on company documents.
 
-The project uses langchain and openai api.
+The project uses Langchain and openai api.
+
+The inject script is inspired by the demo on hwchase17/notion-qa
 
 ## To use
 recommend to use venv

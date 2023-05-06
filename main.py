@@ -10,6 +10,8 @@ from qa import ask_llm
 
 load_dotenv()
 
+openai_api_key = os.getenv("OPENAI_API_KEY")
+os.environ["OPENAI_API_KEY"] = openai_api_key
 
 app = FastAPI()
 
@@ -78,4 +80,5 @@ async def send_qa(request: SendMessageInput):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8002)
+    port = os.getenv('PORT')
+    uvicorn.run(app, host="0.0.0.0", port=port or "8000")

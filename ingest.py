@@ -6,8 +6,12 @@ from langchain.vectorstores import FAISS
 from langchain.embeddings import OpenAIEmbeddings
 import pickle
 import os 
+from dotenv import load_dotenv
 
-#os.environ["OPENAI_API_KEY"] = ''
+load_dotenv()
+
+openai_api_key = os.getenv("OPENAI_API_KEY")
+os.environ["OPENAI_API_KEY"] = openai_api_key
 
 # Here we load in the data in the format that Notion exports it in.
 ps = list(Path("report/").glob("**/*.md"))

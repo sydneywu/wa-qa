@@ -17,7 +17,7 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
-    return {"message": "Simple WhatsApp Webhook tester. There is no front-end, see server.py for implementation!"}
+    return {"message": "Simple WhatsApp Webhook demo"}
 
 @app.get('/webhook')
 
@@ -45,7 +45,18 @@ async def verify_webhook(
 async def handle_webhook(request: Request):
     json_data = await request.json()
     print(f"Incoming webhook: {json_data}")
-    print("xxyxxyxxyxxy")
+
+    if("entry" not in json_data or "object" not in json_data):
+        print("webhhook doesn't have entry/object")
+        return {"status": "error"}
+    
+    change_data = json_data["entry"][0]["changes"][0]["value"]
+    if("contacts" not in change_data):
+        # This is not a whatsapp message
+        print("webhhook doesn't have contact")
+        return {"status": "error"}
+    
+    ### Continue only if it is a whatsapp message
     incomingData = WhatsappIncomingData(**json_data)
     key_data = incomingData.entry[0].changes[0].value
     mobile = key_data.contacts[0].wa_id
